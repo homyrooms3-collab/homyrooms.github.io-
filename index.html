@@ -721,7 +721,7 @@
 </header>
 
 <!-- ── TABS POR CASA ── -->
-<nav class="nav-casas" id="navCasas"><div class="tab-casa activo">CASAS DISPONIBLES</div><div class="tab-casa" id="tab-casa-1"><div class="tab-text"><div>Casa</div><div>José Arrieta</div></div></div><div class="tab-casa" id="tab-casa-2"><div class="tab-text"><div>Casa</div><div>Hanna</div></div></div><div class="tab-casa" id="tab-casa-3"><div class="tab-text"><div>Casa</div><div>Baquedano</div></div></div><div class="tab-casa" id="tab-casa-4"><div class="tab-text"><div>Casa</div><div>Valparaiso</div></div></div></nav>
+<nav class="nav-casas" id="navCasas"><div class="tab-casa activo">CASAS DISPONIBLES</div><div class="tab-casa" id="tab-casa-1"><div class="tab-text"><div>Casa</div><div>José Arrieta</div></div></div><div class="tab-casa" id="tab-casa-2"><div class="tab-text"><div>Casa</div><div>Hanna</div></div></div><div class="tab-casa" id="tab-casa-3"><div class="tab-text"><div>Casa</div><div>Baquedano</div></div></div><div class="tab-casa" id="tab-casa-4"><div class="tab-text"><div>Casa</div><div>Valparaiso</div></div></div><div class="tab-casa" id="tab-casa-6"><div class="tab-text"><div>Departamento</div><div>Román</div></div></div></nav>
 
 <!-- ── FILTROS ── -->
 <div class="filtros">
@@ -982,6 +982,7 @@
     { id: 3, nombre: "CASA BAQUEDANO", icono: "", direccion: "Providencia" },
     { id: 4, nombre: "CASA VALPARAISO", icono: "", direccion: "Providencia" },
     { id: 5, nombre: "CASA EULOGIA", icono: "", direccion: "Providencia" },
+    { id: 6, nombre: "DEPARTAMENTO-ROMAN", icono: "", direccion: "Providencia" },
   ];
 
   // ══════════════════════════════════════════════════════
@@ -992,12 +993,13 @@
     {
       id: 1, casaId: 1,
       nombre: "Habitación 1",
-      precio: 400000, estado: "disponible", m2: 12,
+      precio: 400000, estado: "ocupado", m2: 12,
       bano: "compartido", amoblada: true,
       descripcion: "La habitación más amplia de la casa, equipada con una cómoda cama de 2 plazas, perfecta para quienes buscan mayor espacio y comodidad.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-1/IMG_6574.jpg",
-        "./casa-jose-arrieta/habitacion-1/bb2988b8-1bdd-4d9b-a2af-a928a5eaacde.jpg"
+        "./casa-jose-arrieta/habitacion-1/habitacion-1-1-1.png",
+        "./casa-jose-arrieta/habitacion-1/habitacion-1-1-2.jpg",
+        "./casa-jose-arrieta/habitacion-1/habitacion-1-1-3.png"
       ]
     },
     {
@@ -1007,8 +1009,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La habitación con la ventana más bonita de la casa con una amplia y cómoda cama de 2 plazas.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-2/IMG_6577.jpg",
-        "./casa-jose-arrieta/habitacion-2/8b1686f2-5e39-4d10-bc3f-229827ba4e09.jpg"
+        "./casa-jose-arrieta/habitacion-2/habitacion-2-1-1.jpg",
+        "./casa-jose-arrieta/habitacion-2/habitacion-2-1-2.png",
+        "./casa-jose-arrieta/habitacion-2/habitacion-2-1-3.jpg"
       ]
     },
     {
@@ -1018,8 +1021,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La segunda habitación más amplia de la casa, equipada con una cama de 2 plazas y balcón privado.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-3/IMG_6579.jpg",
-        "./casa-jose-arrieta/habitacion-3/7972deb8-af50-4565-9a45-f771a06a1a74.jpg"
+        "./casa-jose-arrieta/habitacion-3/habitacion-3-1-1.png",
+        "./casa-jose-arrieta/habitacion-3/habitacion-3-1-2.jpg",
+        "./casa-jose-arrieta/habitacion-3/habitacion-3-1-3.jpg"
       ]
     },
     {
@@ -1029,8 +1033,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La habitación más acogedora, con la mejor luz de la casa por las mañanas, perfecta para sentirse como en casa.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-4/IMG_6582.jpg",
-        "./casa-jose-arrieta/habitacion-4/f97b6d1e-cffd-488d-ba14-572828cb21a6.jpeg"
+        "./casa-jose-arrieta/habitacion-4/habitacion-4-1-1.jpg",
+        "./casa-jose-arrieta/habitacion-4/habitacion-4-1-2.JPG",
+        "./casa-jose-arrieta/habitacion-4/habitacion-4-1-3.jpg"
       ]
     },
     {
@@ -1040,8 +1045,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La última habitación de la casa, cómoda y funcional, ideal para quienes buscan un espacio práctico y bien distribuido.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-5/IMG_6585.jpg",
-        "./casa-jose-arrieta/habitacion-5/fa640bde-923c-4dbb-83d4-06837113510d.jpg"
+        "./casa-jose-arrieta/habitacion-5/habitacion-5-1-1.jpg",
+        "./casa-jose-arrieta/habitacion-5/habitacion-5-1-2.png",
+        "./casa-jose-arrieta/habitacion-5/habitacion-5-1-3.jpg"
       ]
     },
     // ── CASA 2 ──
@@ -1424,7 +1430,7 @@
     {
       id: 34, casaId: 4,
       nombre: "Piso 4 - Habitación 1",
-      precio: 370000, estado: "disponible", m2: 15,
+      precio: 370000, estado: "ocupado", m2: 15,
       bano: "compartido", amoblada: true,
       descripcion: "Cómoda habitación de tamaño grande, equipada con cama de dos plazas, mesa de noche, armario, escritorio y silla. Luz natural y vista al oriente. Incluye calefactor.",
       imagenes: [
@@ -1436,7 +1442,7 @@
     {
       id: 35, casaId: 4,
       nombre: "Piso 4 - Habitación 2",
-      precio: 360000, estado: "disponible", m2: 14,
+      precio: 360000, estado: "ocupado", m2: 14,
       bano: "compartido", amoblada: true,
       descripcion: "Cómoda habitación de tamaño grande, equipada con cama de dos plazas, mesa de noche, armario, escritorio y silla. Luz natural y vista a la calle. Incluye calefactor.",
       imagenes: [
@@ -1532,7 +1538,7 @@
     {
       id: 24, casaId: 3,
       nombre: "Piso 1 B) - Habitación 3",
-      precio: 340000, estado: "disponible", m2: 13,
+      precio: 340000, estado: "ocupado", m2: 13,
       bano: "compartido", amoblada: true,
       descripcion: "Amplia, luminosa y con excelente ubicación. Cómoda habitación de tamaño grande, ubicada en una casa patrimonial en el corazón de Providencia. Totalmente equipada con: Cama individual, Velador, Clóset, Escritorio y silla, Luz artificial y ventanas.",
       imagenes: [
@@ -1544,7 +1550,7 @@
     {
       id: 25, casaId: 3,
       nombre: "Piso 1 B) - Habitación 4",
-      precio: 390000, estado: "disponible", m2: 12,
+      precio: 390000, estado: "ocupado", m2: 12,
       bano: "compartido", amoblada: true,
       descripcion: "Amplia, luminosa y con excelente ubicación. Cómoda habitación de tamaño grande, ubicada en una casa patrimonial en el corazón de Providencia. Totalmente equipada con: Cama de dos plazas, Velador, Clóset, Escritorio y silla, Luz artificial, Aire acondicionado.",
       imagenes: [
@@ -2040,8 +2046,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La habitación más amplia de la casa, equipada con una cómoda cama de 2 plazas, perfecta para quienes buscan mayor espacio y comodidad.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-1/IMG_6574.jpg",
-        "./casa-jose-arrieta/habitacion-1/bb2988b8-1bdd-4d9b-a2af-a928a5eaacde.jpg"
+        "./casa-jose-arrieta/habitacion-1/habitacion-1-1-1.png",
+        "./casa-jose-arrieta/habitacion-1/habitacion-1-1-2.jpg",
+        "./casa-jose-arrieta/habitacion-1/habitacion-1-1-3.png"
       ]
     },
     {
@@ -2051,8 +2058,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La habitación con la ventana más bonita de la casa con una amplia y cómoda cama de 2 plazas.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-2/IMG_6577.jpg",
-        "./casa-jose-arrieta/habitacion-2/8b1686f2-5e39-4d10-bc3f-229827ba4e09.jpg"
+        "./casa-jose-arrieta/habitacion-2/habitacion-2-1-1.jpg",
+        "./casa-jose-arrieta/habitacion-2/habitacion-2-1-2.png",
+        "./casa-jose-arrieta/habitacion-2/habitacion-2-1-3.jpg"
       ]
     },
     {
@@ -2062,8 +2070,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La segunda habitación más amplia de la casa, equipada con una cama de 2 plazas y balcón privado.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-3/IMG_6579.jpg",
-        "./casa-jose-arrieta/habitacion-3/7972deb8-af50-4565-9a45-f771a06a1a74.jpg"
+        "./casa-jose-arrieta/habitacion-3/habitacion-3-1-1.png",
+        "./casa-jose-arrieta/habitacion-3/habitacion-3-1-2.jpg",
+        "./casa-jose-arrieta/habitacion-3/habitacion-3-1-3.jpg"
       ]
     },
     {
@@ -2073,8 +2082,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La habitación más acogedora, con la mejor luz de la casa por las mañanas, perfecta para sentirse como en casa.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-4/IMG_6582.jpg",
-        "./casa-jose-arrieta/habitacion-4/f97b6d1e-cffd-488d-ba14-572828cb21a6.jpeg"
+        "./casa-jose-arrieta/habitacion-4/habitacion-4-1-1.jpg",
+        "./casa-jose-arrieta/habitacion-4/habitacion-4-1-2.JPG",
+        "./casa-jose-arrieta/habitacion-4/habitacion-4-1-3.jpg"
       ]
     },
     {
@@ -2084,8 +2094,9 @@
       bano: "compartido", amoblada: true,
       descripcion: "La última habitación de la casa, cómoda y funcional, ideal para quienes buscan un espacio práctico y bien distribuido.",
       imagenes: [
-        "./casa-jose-arrieta/habitacion-5/IMG_6585.jpg",
-        "./casa-jose-arrieta/habitacion-5/fa640bde-923c-4dbb-83d4-06837113510d.jpg"
+        "./casa-jose-arrieta/habitacion-5/habitacion-5-1-1.jpg",
+        "./casa-jose-arrieta/habitacion-5/habitacion-5-1-2.png",
+        "./casa-jose-arrieta/habitacion-5/habitacion-5-1-3.jpg"
       ]
     },
     // ── CASA 5: EULOGIA (AGOSTO-DICIEMBRE) ──
@@ -2238,7 +2249,7 @@
     {
       id: 98, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 13",
-      precio: 300000, estado: "ocupado", m2: 13,
+      precio: 300000, estado: "disponible", m2: 13,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2769,6 +2780,103 @@
         "./casa-eulogia/piso-4/habitacion-28/habitacion-28-1-2.jpg",
         "./casa-eulogia/piso-4/habitacion-28/habitacion-28-1-3.jpg"
       ]
+    },
+    // ── DEPARTAMENTO ROMAN - MARZO A JULIO ──
+    {
+      id: 142, casaId: 6, periodo: "marzo-julio",
+      nombre: "Habitación 1",
+      precio: 400000, estado: "ocupado", m2: 13,
+      bano: "compartido", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-1/habitacion-1-1-1.jpg",
+        "./departamento-roman/habitacion-1/habitacion-1-1-2.jpg",
+        "./departamento-roman/habitacion-1/habitacion-1-1-3.jpg"
+      ]
+    },
+    {
+      id: 143, casaId: 6, periodo: "marzo-julio",
+      nombre: "Habitación 2",
+      precio: 400000, estado: "ocupado", m2: 20,
+      bano: "compartido", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-2/habitacion-2-1-1.jpg",
+        "./departamento-roman/habitacion-2/habitacion-2-1-2.jpg",
+        "./departamento-roman/habitacion-2/habitacion-2-1-3.jpg"
+      ]
+    },
+    {
+      id: 144, casaId: 6, periodo: "marzo-julio",
+      nombre: "Habitación 3",
+      precio: 440000, estado: "ocupado", m2: 14,
+      bano: "privado", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-3/habitacion-3-1-1.jpg",
+        "./departamento-roman/habitacion-3/habitacion-3-1-2.jpg",
+        "./departamento-roman/habitacion-3/habitacion-3-1-3.jpg"
+      ]
+    },
+    {
+      id: 145, casaId: 6, periodo: "marzo-julio",
+      nombre: "Habitación 4",
+      precio: 440000, estado: "ocupado", m2: 13,
+      bano: "privado", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-4/habitacion-4-1-1.jpg",
+        "./departamento-roman/habitacion-4/habitacion-4-1-2.jpg",
+        "./departamento-roman/habitacion-4/habitacion-4-1-3.jpg"
+      ]
+    },
+    {
+      id: 146, casaId: 6, periodo: "agosto-diciembre",
+      nombre: "Habitación 1",
+      precio: 400000, estado: "disponible", m2: 13,
+      bano: "compartido", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-1/habitacion-1-1-1.jpg",
+        "./departamento-roman/habitacion-1/habitacion-1-1-2.jpg",
+        "./departamento-roman/habitacion-1/habitacion-1-1-3.jpg"
+      ]
+    },
+    {
+      id: 147, casaId: 6, periodo: "agosto-diciembre",
+      nombre: "Habitación 2",
+      precio: 400000, estado: "disponible", m2: 20,
+      bano: "compartido", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-2/habitacion-2-1-1.jpg",
+        "./departamento-roman/habitacion-2/habitacion-2-1-2.jpg",
+        "./departamento-roman/habitacion-2/habitacion-2-1-3.jpg"
+      ]
+    },
+    {
+      id: 148, casaId: 6, periodo: "agosto-diciembre",
+      nombre: "Habitación 3",
+      precio: 440000, estado: "disponible", m2: 14,
+      bano: "privado", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-3/habitacion-3-1-1.jpg",
+        "./departamento-roman/habitacion-3/habitacion-3-1-2.jpg",
+        "./departamento-roman/habitacion-3/habitacion-3-1-3.jpg"
+      ]
+    },
+    {
+      id: 149, casaId: 6, periodo: "agosto-diciembre",
+      nombre: "Habitación 4",
+      precio: 440000, estado: "disponible", m2: 13,
+      bano: "privado", amoblada: true,
+      descripcion: "",
+      imagenes: [
+        "./departamento-roman/habitacion-4/habitacion-4-1-1.jpg",
+        "./departamento-roman/habitacion-4/habitacion-4-1-2.jpg",
+        "./departamento-roman/habitacion-4/habitacion-4-1-3.jpg"
+      ]
     }
   ];
 
@@ -2885,6 +2993,21 @@
     const contenido = document.getElementById("contenido");
     contenido.innerHTML = "";
 
+    // Agregar selector de período en la pestaña de casas disponibles
+    if (casaActiva === 0) {
+      const periodoSelector = document.createElement("div");
+      periodoSelector.style.cssText = "margin: 24px 0; display: flex; gap: 12px; border-bottom: 2px solid var(--light-gray);";
+      periodoSelector.innerHTML = `
+        <button onclick="cambiarPeriodo('marzo-julio')" style="flex: 1; padding: 12px 16px; border: none; background: ${periodoActivo === 'marzo-julio' ? 'var(--teal)' : 'transparent'}; color: ${periodoActivo === 'marzo-julio' ? 'white' : 'var(--text)'}; font-weight: ${periodoActivo === 'marzo-julio' ? '700' : '600'}; border-bottom: ${periodoActivo === 'marzo-julio' ? '3px solid var(--teal)' : 'none'}; cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+          🗓️ Marzo - Julio 2026
+        </button>
+        <button onclick="cambiarPeriodo('agosto-diciembre')" style="flex: 1; padding: 12px 16px; border: none; background: ${periodoActivo === 'agosto-diciembre' ? 'var(--teal)' : 'transparent'}; color: ${periodoActivo === 'agosto-diciembre' ? 'white' : 'var(--text)'}; font-weight: ${periodoActivo === 'agosto-diciembre' ? '700' : '600'}; border-bottom: ${periodoActivo === 'agosto-diciembre' ? '3px solid var(--teal)' : 'none'}; cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+          🗓️ Agosto - Diciembre 2026
+        </button>
+      `;
+      contenido.appendChild(periodoSelector);
+    }
+
     // Casas a mostrar
     const casasFiltradas = casaActiva === 0
       ? casas
@@ -2895,8 +3018,8 @@
       const habs = habitaciones.filter(h => {
         if (h.casaId !== casa.id) return false;
         // Para todas las casas con período, filtrar por período
-        if ((casa.id === 1 || casa.id === 2 || casa.id === 3 || casa.id === 4 || casa.id === 5) && h.periodo && h.periodo !== periodoActivo) return false;
-        if ((casa.id === 1 || casa.id === 2 || casa.id === 3 || casa.id === 4 || casa.id === 5) && !h.periodo && periodoActivo !== "marzo-julio") return false;
+        if ((casa.id === 1 || casa.id === 2 || casa.id === 3 || casa.id === 4 || casa.id === 5 || casa.id === 6) && h.periodo && h.periodo !== periodoActivo) return false;
+        if ((casa.id === 1 || casa.id === 2 || casa.id === 3 || casa.id === 4 || casa.id === 5 || casa.id === 6) && !h.periodo && periodoActivo !== "marzo-julio") return false;
         const matchTexto = h.nombre.toLowerCase().includes(busq) ||
                            h.descripcion.toLowerCase().includes(busq);
         let matchPrecio = true;
@@ -2950,6 +3073,11 @@
                 Casa universitaria, en 1°, 2°, 3° y 4 piso, ubicada en un barrio universitario.<br>
                 A pasos del Metro Parque Bustamante L5 y Metro Baquedano L1/L5.
               </p>
+            ` : casa.id === 6 ? `
+              <p style="font-size: 0.9rem; margin-top: 8px; line-height: 1.5; color: var(--text);">
+                Departamento ubicado en barrio residencial.<br>
+                A pasos del Metro Manuel Montt L1 y Metro Salvador L1.
+              </p>
             ` : ''}
           </div>
           <div class="casa-stats">
@@ -3001,7 +3129,7 @@
         </div>
         ` : ''}
         <div class="grid">
-          ${casaActiva === 3 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 5 || h.id === 6 || h.id === 21 || h.id === 22 || h.id === 23)) || (periodoActivo === "agosto-diciembre" && (h.id === 52 || h.id === 53 || h.id === 58 || h.id === 59 || h.id === 60))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casaActiva === 4 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 7 || h.id === 8 || h.id === 18 || h.id === 19 || h.id === 32)) || (periodoActivo === "agosto-diciembre" && (h.id === 69 || h.id === 70 || h.id === 71 || h.id === 72 || h.id === 86))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casaActiva === 5 ? '' : (habsMostradas.length > 0
+          ${casaActiva === 3 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 5 || h.id === 6 || h.id === 21 || h.id === 22 || h.id === 23)) || (periodoActivo === "agosto-diciembre" && (h.id === 52 || h.id === 53 || h.id === 58 || h.id === 59 || h.id === 60))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casaActiva === 4 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 7 || h.id === 8 || h.id === 18 || h.id === 19 || h.id === 32)) || (periodoActivo === "agosto-diciembre" && (h.id === 69 || h.id === 70 || h.id === 71 || h.id === 72 || h.id === 86))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casaActiva === 5 ? '' : casaActiva === 6 ? '' : (habsMostradas.length > 0
             ? habsMostradas.map((h, i) => renderTarjeta(h, i + 1)).join("")
             : `<div class="sin-resultados" style="grid-column:1/-1">
                 <div class="icon">🔍</div>
@@ -3205,7 +3333,7 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1e">
                   <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
                   </div>
                   <div class="carousel-img">
                     <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Terraza" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
@@ -3597,13 +3725,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-3">
                   <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-1-1-1.jpg" alt="Baño Piso 3-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-1-1-1.jpg')">
+                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-1.jpg" alt="Baño Piso 3-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-1.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-1-1-2.jpg" alt="Baño Piso 3-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-1-1-2.jpg')">
+                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-2.jpg" alt="Baño Piso 3-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-1-1-3.jpg" alt="Baño Piso 3-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-1-1-3.jpg')">
+                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-3.jpg" alt="Baño Piso 3-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-3.jpg')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-3', 3)">❮</button>
@@ -3639,6 +3767,169 @@
             <div style="text-align: center; padding: 6px;">
               <div style="font-size: 1.6rem; margin-bottom: 3px;">🧺</div>
               <div style="color: var(--azul); font-weight: 600;">2 Lavadoras</div>
+            </div>
+          </div>
+        </div>
+        ` : casaActiva === 6 ? `
+        <div style="margin: 24px 0; display: flex; gap: 12px; border-bottom: 2px solid var(--light-gray);">
+          <button onclick="cambiarPeriodo('marzo-julio')" style="flex: 1; padding: 12px 16px; border: none; background: ${periodoActivo === 'marzo-julio' ? 'var(--teal)' : 'transparent'}; color: ${periodoActivo === 'marzo-julio' ? 'white' : 'var(--text)'}; font-weight: ${periodoActivo === 'marzo-julio' ? '700' : '600'}; border-bottom: ${periodoActivo === 'marzo-julio' ? '3px solid var(--teal)' : 'none'}; cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+            🗓️ Marzo - Julio 2026
+          </button>
+          <button onclick="cambiarPeriodo('agosto-diciembre')" style="flex: 1; padding: 12px 16px; border: none; background: ${periodoActivo === 'agosto-diciembre' ? 'var(--teal)' : 'transparent'}; color: ${periodoActivo === 'agosto-diciembre' ? 'white' : 'var(--text)'}; font-weight: ${periodoActivo === 'agosto-diciembre' ? '700' : '600'}; border-bottom: ${periodoActivo === 'agosto-diciembre' ? '3px solid var(--teal)' : 'none'}; cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+            🗓️ Agosto - Diciembre 2026
+          </button>
+        </div>
+        <div class="grid" style="margin: 24px 0;">
+          ${habitaciones.filter(h => h.casaId === 6 && h.periodo === periodoActivo).map((h, i) => renderTarjeta(h, i + 1)).join("")}
+        </div>
+        <div class="espacios-comunes">
+          <h3>ESPACIOS COMUNES</h3>
+          <div class="espacios-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-ec-1d">
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-1/casa-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-1/casa-1-1-1.jpg')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-1/casa-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-1/casa-1-1-2.jpg')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-1/casa-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-1/casa-1-1-3.jpg')">
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-ec-1d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-ec-1d-indicator">1 / 3</div>
+              </div>
+            </div>
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-ec-2d">
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-2/living-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-2/living-1.jpg')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-2/living-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-2/living-2.jpg')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-2/living-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-2/living-3.jpg')">
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-ec-2d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-ec-2d-indicator">1 / 3</div>
+              </div>
+            </div>
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-ec-3d">
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-3/patio-1.jpg" alt="Patio 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-3/patio-1.jpg')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-3/patio-2.jpg" alt="Patio 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-3/patio-2.jpg')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/espacios-comunes/carrusel-3/patio-3.jpg" alt="Patio 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/espacios-comunes/carrusel-3/patio-3.jpg')">
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-ec-3d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-ec-3d-indicator">1 / 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="espacios-comunes" style="margin-top: 40px;">
+          <h3>BAÑOS</h3>
+          <div class="espacios-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-bano-1d">
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-1/banos-1-1-1.JPG" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-1/banos-1-1-1.JPG')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-1/banos-1-1-2.JPG" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-1/banos-1-1-2.JPG')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-1/banos-1-1-3.JPG" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-1/banos-1-1-3.JPG')">
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-1d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-bano-1d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-bano-1d-indicator">1 / 3</div>
+              </div>
+            </div>
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-bano-2d">
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-2/banos-2-1-1.JPG" alt="Baño 2-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-2/banos-2-1-1.JPG')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-2/banos-2-1-2.JPG" alt="Baño 2-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-2/banos-2-1-2.JPG')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-2/banos-2-1-3.JPG" alt="Baño 2-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-2/banos-2-1-3.JPG')">
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-2d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-bano-2d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-bano-2d-indicator">1 / 3</div>
+              </div>
+            </div>
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-bano-3d">
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-3/banos-3-1-1.JPG" alt="Baño 3-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-3/banos-3-1-1.JPG')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-3/banos-3-1-2.JPG" alt="Baño 3-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-3/banos-3-1-2.JPG')">
+                  </div>
+                  <div class="carousel-img">
+                    <img src="./departamento-roman/banos/carrusel-3/banos-3-1-3.JPG" alt="Baño 3-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./departamento-roman/banos/carrusel-3/banos-3-1-3.JPG')">
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-3d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-bano-3d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-bano-3d-indicator">1 / 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin: 20px 0; padding: 14px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid var(--teal);">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--azul); margin: 0 0 10px 0;">CONOCE TU CASA</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; font-size: 0.8rem;">
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">🛋️</div>
+              <div style="color: var(--azul); font-weight: 600;">Living Room</div>
+            </div>
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">🍳</div>
+              <div style="color: var(--azul); font-weight: 600;">Cocina</div>
+            </div>
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">🍽️</div>
+              <div style="color: var(--azul); font-weight: 600;">Comedor</div>
+            </div>
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">📺</div>
+              <div style="color: var(--azul); font-weight: 600;">TV</div>
+            </div>
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">🚿</div>
+              <div style="color: var(--azul); font-weight: 600;">3 Baños</div>
+            </div>
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">🧺</div>
+              <div style="color: var(--azul); font-weight: 600;">Lavadora</div>
+            </div>
+            <div style="text-align: center; padding: 6px;">
+              <div style="font-size: 1.6rem; margin-bottom: 3px;">🌳</div>
+              <div style="color: var(--azul); font-weight: 600;">Patio</div>
             </div>
           </div>
         </div>
@@ -3845,13 +4136,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1j">
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1j', 3)">❮</button>
@@ -3863,13 +4154,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2j">
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-2/cocina-1.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-1.png" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-1.png')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-2/cocina-2.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-2/cocina-3.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-3.png" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-3.png')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2j', 3)">❮</button>
@@ -3881,13 +4172,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3j">
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-3/bano-1.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-1.png" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-1.png')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-3/bano-2.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/casa-jose-arrieta-espacios-comunes/carrusel-3/bano-3.jpg')">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-3.jpg')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3j', 3)">❮</button>
@@ -3903,13 +4194,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1h">
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1h', 3)">❮</button>
@@ -3921,13 +4212,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2h">
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-2/cocina-1.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-1.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-2/cocina-2.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-2/cocina-1.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-3.jpg')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2h', 3)">❮</button>
@@ -3939,13 +4230,13 @@
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3h">
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-3/bano-1.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-1.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-3/bano-2.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-2.jpg')">
                   </div>
                   <div class="carousel-img">
-                    <img src="./casa-hanna/casa-hanna-espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/casa-hanna-espacios-comunes/carrusel-3/bano-3.jpg')">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-3.jpg')">
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3h', 3)">❮</button>
@@ -3956,7 +4247,10 @@
           </div>
         </div>` : ""}
         </div>`;
-      contenido.appendChild(sec);
+      // No mostrar casas sin habitaciones disponibles en la pestaña "Casas Disponibles"
+      if (casaActiva !== 0 || dispCount > 0) {
+        contenido.appendChild(sec);
+      }
     });
 
     const total = habitaciones.filter(h =>
