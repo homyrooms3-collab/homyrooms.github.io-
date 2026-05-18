@@ -695,6 +695,28 @@
       .casa-header { flex-wrap: wrap; }
       .casa-header .casa-stats { margin-left: 0; text-align: left; }
     }
+
+    /* ── EXPAND ICON ── */
+    .expand-icon {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(42, 188, 188, 0.7);
+      border-radius: 6px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    .expand-icon:hover {
+      background: rgba(42, 188, 188, 1);
+      transform: scale(1.15);
+    }
   </style>
 </head>
 <body>
@@ -2951,11 +2973,15 @@
             <div class="carousel-container">
               <div class="carousel-wrapper" id="${carouselId}">
                 ${imagenes.map(img => `
-                  <div class="carousel-img">
+                  <div class="carousel-img" style="position: relative;">
                     <img src="${img}" alt="${h.nombre}" loading="lazy"
-                         style="cursor: pointer;"
-                         onclick="abrirModal('${img}')"
+                         style="width: 100%; height: 100%; object-fit: cover;"
                          onerror="this.src='https://via.placeholder.com/700x400/e6f8f8/2ABCBC?text=Habitaci%C3%B3n'">
+                    <div class="expand-icon" onclick="abrirModal('${img}')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 `).join('')}
               </div>
@@ -2964,10 +2990,16 @@
               <div class="carousel-indicator" id="${carouselId}-indicator">1 / ${imagenes.length}</div>
             </div>
           ` : `
-            <img src="${imagenes[0]}" alt="${h.nombre}" loading="lazy"
-                 style="cursor: pointer;"
-                 onclick="abrirModal('${imagenes[0]}')"
-                 onerror="this.src='https://via.placeholder.com/700x400/e6f8f8/2ABCBC?text=Habitaci%C3%B3n'">
+            <div style="position: relative; width: 100%; height: 100%;">
+              <img src="${imagenes[0]}" alt="${h.nombre}" loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover;"
+                   onerror="this.src='https://via.placeholder.com/700x400/e6f8f8/2ABCBC?text=Habitaci%C3%B3n'">
+              <div class="expand-icon" onclick="abrirModal('${imagenes[0]}')">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                </svg>
+              </div>
+            </div>
           `}
           <span class="badge ${dispoClass}">${dispoText}</span>
           ${casaActiva !== 0 ? `<span class="num-hab">Hab. #${numHab}</span>` : ''}
@@ -3142,17 +3174,37 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1a">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-4.jpg" alt="Espacio Común 4" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-4.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-4.jpg" alt="Espacio Común 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-1/living-1-1-4.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1a', 4)">❮</button>
@@ -3163,14 +3215,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2a">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-3.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-3.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-2/bano-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2a', 3)">❮</button>
@@ -3181,14 +3248,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3a">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-3.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-3.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-a/espacios-comunes/carrusel-3/cocina-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3a', 3)">❮</button>
@@ -3241,14 +3323,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1d">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-1.jpg" alt="living-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-1.jpg" alt="living-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-2.jpg" alt="living-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-2.jpg" alt="living-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-3.jpg" alt="living-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-3.jpg" alt="living-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-1/living-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1d', 3)">❮</button>
@@ -3259,14 +3356,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2d">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2d', 3)">❮</button>
@@ -3277,14 +3389,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3d">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-1/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3d', 3)">❮</button>
@@ -3332,14 +3459,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1e">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Terraza" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Terraza" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1e', 3)">❮</button>
@@ -3350,14 +3492,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2e">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2e', 3)">❮</button>
@@ -3368,14 +3525,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3e">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-2/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3e', 3)">❮</button>
@@ -3422,14 +3594,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1f">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-1.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-1.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-2.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-2.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-3.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-3.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-1/living-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1f', 3)">❮</button>
@@ -3440,14 +3627,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2f">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2f', 3)">❮</button>
@@ -3458,14 +3660,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3f">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-3/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3f', 3)">❮</button>
@@ -3512,14 +3729,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1g">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-1.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-1.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-2.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-2.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-3.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-3.jpg" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-1/living-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1g', 3)">❮</button>
@@ -3530,14 +3762,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2g">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2g', 3)">❮</button>
@@ -3548,14 +3795,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3g">
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-valparaiso/piso-4/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3g', 3)">❮</button>
@@ -3629,14 +3891,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1h">
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-1/casa-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1h', 3)">❮</button>
@@ -3647,14 +3924,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2h">
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-2/living-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-2/living-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-2/living-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-2/living-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-2/living-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-2/living-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-2/living-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-2/living-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-2/living-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-2/living-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-2/living-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-2/living-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2h', 3)">❮</button>
@@ -3665,14 +3957,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3h">
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-3/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-3/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-3/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-3/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-3/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-3/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-3/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-3/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/espacio-comunes/carrusel-3/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-3/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/espacio-comunes/carrusel-3/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/espacio-comunes/carrusel-3/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3h', 3)">❮</button>
@@ -3688,14 +3995,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-1">
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-1.jpg" alt="Baño Piso 1-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-1.jpg" alt="Baño Piso 1-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-2.jpg" alt="Baño Piso 1-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-2.jpg" alt="Baño Piso 1-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-3.jpg" alt="Baño Piso 1-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-3.jpg" alt="Baño Piso 1-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-1-piso-1/bano-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-1', 3)">❮</button>
@@ -3706,14 +4028,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-2">
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-1.jpg" alt="Baño Piso 2-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-1.jpg" alt="Baño Piso 2-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-2.jpg" alt="Baño Piso 2-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-2.jpg" alt="Baño Piso 2-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-3.jpg" alt="Baño Piso 2-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-3.jpg" alt="Baño Piso 2-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-2-piso-2/bano-2-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-2', 3)">❮</button>
@@ -3724,14 +4061,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-3">
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-1.jpg" alt="Baño Piso 3-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-1.jpg" alt="Baño Piso 3-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-2.jpg" alt="Baño Piso 3-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-2.jpg" alt="Baño Piso 3-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-3.jpg" alt="Baño Piso 3-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-3.jpg" alt="Baño Piso 3-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-eulogia/banos/carrusel-3-piso-3/bano-3-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-3', 3)">❮</button>
@@ -3788,14 +4140,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1d">
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-1/casa-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-1/casa-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-1/casa-1-1-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-1/casa-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-1/casa-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-1/casa-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-1/casa-1-1-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-1/casa-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-1/casa-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-1/casa-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-1/casa-1-1-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-1/casa-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1d', 3)">❮</button>
@@ -3806,14 +4173,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2d">
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-2/living-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-2/living-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-2/living-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-2/living-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-2/living-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-2/living-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-2/living-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-2/living-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-2/living-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-2/living-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-2/living-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-2/living-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2d', 3)">❮</button>
@@ -3824,19 +4206,67 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3d">
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-3/patio-1.jpg" alt="Patio 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-3/patio-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-3/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-3/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-3/patio-2.jpg" alt="Patio 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-3/patio-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-3/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-3/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/espacios-comunes/carrusel-3/patio-3.jpg" alt="Patio 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-3/patio-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-3/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-3/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3d', 3)">❮</button>
                 <button class="carousel-nav next" onclick="carouselNext('carousel-ec-3d', 3)">❯</button>
                 <div class="carousel-indicator" id="carousel-ec-3d-indicator">1 / 3</div>
+              </div>
+            </div>
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-ec-4d">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-4/patio-1.jpg" alt="Patio 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-4/patio-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-4/patio-2.jpg" alt="Patio 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-4/patio-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/espacios-comunes/carrusel-4/patio-3.jpg" alt="Patio 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/espacios-comunes/carrusel-4/patio-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-4d', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-ec-4d', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-ec-4d-indicator">1 / 3</div>
               </div>
             </div>
           </div>
@@ -3847,14 +4277,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-1d">
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-1/banos-1-1-1.jpg" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-1/banos-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-1/banos-1-1-1.jpg" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-1/banos-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-1/banos-1-1-2.jpg" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-1/banos-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-1/banos-1-1-2.jpg" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-1/banos-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-1/banos-1-1-3.jpg" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-1/banos-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-1/banos-1-1-3.jpg" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-1/banos-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-1d', 3)">❮</button>
@@ -3865,14 +4310,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-2d">
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-2/banos-2-1-1.jpg" alt="Baño 2-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-2/banos-2-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-2/banos-2-1-1.jpg" alt="Baño 2-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-2/banos-2-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-2/banos-2-1-2.jpg" alt="Baño 2-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-2/banos-2-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-2/banos-2-1-2.jpg" alt="Baño 2-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-2/banos-2-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-2/banos-2-1-3.jpg" alt="Baño 2-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-2/banos-2-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-2/banos-2-1-3.jpg" alt="Baño 2-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-2/banos-2-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-2d', 3)">❮</button>
@@ -3883,14 +4343,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-bano-3d">
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-3/banos-3-1-1.jpg" alt="Baño 3-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-3/banos-3-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-3/banos-3-1-1.jpg" alt="Baño 3-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-3/banos-3-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-3/banos-3-1-2.jpg" alt="Baño 3-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-3/banos-3-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-3/banos-3-1-2.jpg" alt="Baño 3-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-3/banos-3-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./depto-roman/banos/carrusel-3/banos-3-1-3.jpg" alt="Baño 3-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./depto-roman/banos/carrusel-3/banos-3-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./depto-roman/banos/carrusel-3/banos-3-1-3.jpg" alt="Baño 3-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./depto-roman/banos/carrusel-3/banos-3-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-bano-3d', 3)">❮</button>
@@ -3947,14 +4422,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1b">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-1.jpg" alt="Espacio Común 1-1-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-1.jpg" alt="Espacio Común 1-1-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-2.jpg" alt="Espacio Común 1-1-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-2.jpg" alt="Espacio Común 1-1-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-3.jpg" alt="Espacio Común 1-1-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-3.jpg" alt="Espacio Común 1-1-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-1/living-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1b', 3)">❮</button>
@@ -3965,14 +4455,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2b">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1-1-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1-1-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2-1-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2-1-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-2-1-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-2-1-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2b', 3)">❮</button>
@@ -3983,14 +4488,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3b">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1-1-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1-1-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-1-1-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-1-1-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-1-1-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-1-1-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-1-b/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3b', 3)">❮</button>
@@ -4042,14 +4562,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1c">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-1.jpg" alt="Living 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-2.jpg" alt="Living 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-3.jpg" alt="Living 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-1/living-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1c', 3)">❮</button>
@@ -4060,14 +4595,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2c">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg" alt="Cocina 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg" alt="Cocina 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg" alt="Cocina 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2c', 3)">❮</button>
@@ -4078,14 +4628,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3c">
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-1.jpg" alt="Baño 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-2.jpg" alt="Baño 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-3.jpg" alt="Baño 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-baquedano/piso-2/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3c', 3)">❮</button>
@@ -4135,14 +4700,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1j">
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1j', 3)">❮</button>
@@ -4153,14 +4733,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2j">
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-1.png')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-1.png')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-3.png')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-2/cocina-3.png')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2j', 3)">❮</button>
@@ -4171,14 +4766,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3j">
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-1.png')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-1.png')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-jose-arrieta/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3j', 3)">❮</button>
@@ -4193,14 +4803,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-1h">
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-1/espacio-comun-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-1h', 3)">❮</button>
@@ -4211,14 +4836,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-2h">
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-1.jpg" alt="cocina-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-2.jpg" alt="cocina-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-2/cocina-3.jpg" alt="cocina-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-2/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-2h', 3)">❮</button>
@@ -4229,14 +4869,29 @@
             <div style="position: relative;">
               <div class="carousel-container">
                 <div class="carousel-wrapper" id="carousel-ec-3h">
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-1.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-1.jpg" alt="bano-1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-2.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-2.jpg" alt="bano-2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="carousel-img">
-                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-3.jpg')">
+                  <div class="carousel-img" style="position: relative;">
+                    <img src="./casa-hanna/espacios-comunes/carrusel-3/bano-3.jpg" alt="bano-3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-hanna/espacios-comunes/carrusel-3/bano-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <button class="carousel-nav prev" onclick="carouselPrev('carousel-ec-3h', 3)">❮</button>
