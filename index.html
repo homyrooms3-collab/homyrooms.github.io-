@@ -4798,7 +4798,7 @@
       const habsMostradas = habs;
       totalMostradas += habsMostradas.length;
       const dispCount = habsMostradas.filter(h => h.estado === "disponible").length;
-      const totalHabs  = habitaciones.filter(h => h.casaId === casa.id && (!h.periodo || h.periodo === periodoActivo) && (h.periodo || periodoActivo === "marzo-julio")).length;
+      const totalHabs  = habitaciones.filter(h => h.casaId === casa.id && (!h.periodo || h.periodo === periodoActivo) && (h.periodo || periodoActivo === "marzo-julio") && h.nombre !== "Baño - Hab 4").length;
 
       const descsCasa = {
         1: "Casa patrimonial, 2° piso · 5 habitaciones · Metro Baquedano L1/L5",
