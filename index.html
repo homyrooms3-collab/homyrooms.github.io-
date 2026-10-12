@@ -270,6 +270,33 @@
       .hero-headline { font-size: 1.65rem; }
       .hero-sub { font-size: 0.95rem; }
       .hero-body { padding: 38px 16px 0; }
+      .hero-search-row {
+        flex-direction: column;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 4px;
+      }
+      .hero-search-sec-main {
+        border-right: none;
+        border-bottom: 1.5px solid #dde5f0;
+        width: 100%;
+        padding: 10px 14px;
+      }
+      .hero-search-period {
+        border-right: none;
+        border-bottom: none;
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 0 0 10px 10px;
+      }
+      .hero-search-btn {
+        width: calc(100% - 8px);
+        margin: 4px;
+        justify-content: center;
+      }
+      .hero-nav {
+        padding: 0 16px;
+      }
     }
 
     /* ── NAV CASAS (tabs) ── */
@@ -1509,10 +1536,10 @@
       .tipo-card {
         min-width: 60px;
         padding: 8px 8px;
-        flex: 0 0 calc(50% - 3px);
+        flex: 1 1 calc(50% - 6px);
       }
       .tipo-card.mapa-card {
-        flex: 0 0 calc(50% - 3px);
+        flex: 1 1 100%;
       }
       .tipo-card .tipo-icon { font-size: 1.2rem; }
       .tipo-card .tipo-label { font-size: 0.58rem; line-height: 1.2; }
@@ -1532,15 +1559,15 @@
       .chips-bar {
         padding: 8px 10px;
         gap: 6px;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
       }
       .chip {
-        padding: 6px 10px;
-        font-size: 0.72rem;
-        flex: 1;
+        padding: 6px 12px;
+        font-size: 0.76rem;
+        flex: 0 0 auto;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
       .chip-busqueda {
         min-width: 100%;
