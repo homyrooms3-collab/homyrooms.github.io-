@@ -5635,7 +5635,7 @@ function cambiarIdioma(lang, btn) {
     casasGrid.className = "casas-grid";
     contenido.appendChild(casasGrid);
 
-    const casasAMostrar = mostrarTodas ? casasFiltradas : casasFiltradas.slice(0, 4);
+    const casasAMostrar = casasFiltradas;
     casasAMostrar.forEach(casa => {
       // Habitaciones de esta casa que pasan los filtros de período y búsqueda
       const habs = habitaciones.filter(h => {
@@ -9691,13 +9691,6 @@ function cambiarIdioma(lang, btn) {
       contenido.appendChild(sec);
     });
 
-    // Botón "Ver todas" si hay más de 4 casas y no se están mostrando todas
-    if (!mostrarTodas && casasFiltradas.length > 4) {
-      const btnWrap = document.createElement("div");
-      btnWrap.style.cssText = "grid-column:1/-1; text-align:center; padding: 8px 0 16px;";
-      btnWrap.innerHTML = `<button onclick="mostrarTodas=true; filtrar();" style="background:transparent; border:2px solid #1E3A9A; color:#1E3A9A; border-radius:32px; padding:12px 36px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='#1E3A9A';this.style.color='white';" onmouseout="this.style.background='transparent';this.style.color='#1E3A9A';">Ver las ${0} propiedades restantes ↓</button>`.replace('${0}', casasFiltradas.length - 4);
-      casasGrid.appendChild(btnWrap);
-    }
 
     const total = habitaciones.length;
     const contEl = document.getElementById("contador");
