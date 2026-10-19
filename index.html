@@ -1624,6 +1624,14 @@
   }
   .btn-agendar:hover { background: var(--dark); }
 
+  @keyframes fab-pulse {
+    0%   { box-shadow: 0 4px 18px rgba(30,58,154,0.38), 0 0 0 0 rgba(30,58,154,0.55); }
+    60%  { box-shadow: 0 4px 18px rgba(30,58,154,0.38), 0 0 0 12px rgba(30,58,154,0); }
+    100% { box-shadow: 0 4px 18px rgba(30,58,154,0.38), 0 0 0 0 rgba(30,58,154,0); }
+  }
+  #fab-agendar { animation: fab-pulse 2s ease-out infinite; }
+  #fab-agendar:hover { animation: none; }
+
   .bk-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.55);
     z-index: 2000; display: flex; align-items: flex-end;
@@ -10427,6 +10435,17 @@ function cambiarIdioma(lang, btn) {
   </div>
 </div>
 
+
+<!-- ── BOTÓN FLOTANTE AGENDAR ── -->
+<div id="fab-agendar" onclick="abrirAgendamiento('')"
+  style="position:fixed; bottom:28px; right:24px; z-index:9990; display:flex; align-items:center; gap:0; cursor:pointer; overflow:hidden; border-radius:32px; background:#1E3A9A; box-shadow:0 4px 18px rgba(30,58,154,0.38); transition:all 0.25s ease; max-width:52px; height:52px;"
+  onmouseenter="this.style.maxWidth='220px'; this.querySelector('.fab-label').style.opacity='1'; this.querySelector('.fab-label').style.maxWidth='180px';"
+  onmouseleave="this.style.maxWidth='52px'; this.querySelector('.fab-label').style.opacity='0'; this.querySelector('.fab-label').style.maxWidth='0';">
+  <div style="min-width:52px; height:52px; display:flex; align-items:center; justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+  </div>
+  <span class="fab-label" style="color:#fff; font-size:14px; font-weight:700; white-space:nowrap; opacity:0; max-width:0; overflow:hidden; transition:all 0.25s ease; padding-right:18px; letter-spacing:0.01em;">Agendar reunión</span>
+</div>
 
 <!-- ── MODAL AGENDAMIENTO ── -->
 <div class="bk-overlay" id="modalAgendamiento" style="display:none;"
