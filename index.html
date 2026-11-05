@@ -1307,6 +1307,32 @@
     }
     .casa-preview-card:hover .ver-btn { gap: 8px; }
 
+    /* ── CONTADOR HERO ── */
+    .hero-counter {
+      max-width: 460px;
+      margin: 20px auto 0;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 18px;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      color: var(--text);
+    }
+    .hc-top { font-weight: 700; font-size: 15px; margin-bottom: 10px; color: var(--text); }
+    .hc-bar { height: 9px; background: #eef1f7; border-radius: 99px; overflow: hidden; }
+    .hc-fill { height: 100%; background: linear-gradient(90deg,#ff8a3d,#e65100); border-radius: 99px; transition: width .5s; width: 4%; }
+    .hc-meta { display: flex; justify-content: space-between; margin-top: 7px; font-size: 11px; color: #6b7590; }
+
+    /* ── BANDERAS EN TARJETAS ── */
+    .casa-paises-wrap { background: #f4f7fd; border-radius: 10px; padding: 9px 11px; margin-bottom: 10px; }
+    .paises-tabs { display: flex; gap: 4px; margin-bottom: 7px; }
+    .paises-tab { font-family: inherit; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 8px; border: 0; background: transparent; color: var(--muted); cursor: pointer; transition: background .15s, color .15s; }
+    .paises-tab.on { background: var(--azul); color: #fff; }
+    .paises-label { font-size: 12px; color: var(--muted); margin-right: 4px; }
+    .casa-paises { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; min-height: 24px; }
+    .flag-emoji { font-size: 20px; line-height: 1; }
+    .flag-regional { font-size: 10px; font-weight: 700; background: #fff; color: var(--azul); border: 1.5px solid var(--azul); padding: 2px 7px; border-radius: 99px; white-space: nowrap; }
+
     /* Panel expandido de habitaciones */
     .casa-detalle {
       display: none;
@@ -2007,6 +2033,16 @@
       <button class="hero-search-btn" onclick="document.querySelector('.nav-casas')?.scrollIntoView({behavior:'smooth'})" data-es="Buscar" data-en="Search">Buscar</button>
     </div>
   </div>
+  <!-- CONTADOR DE PIEZAS -->
+  <div class="hero-counter" id="heroCounter" style="display:none">
+    <div class="hc-top" id="hcTop"></div>
+    <div class="hc-bar"><div class="hc-fill" id="hcFill"></div></div>
+    <div class="hc-meta">
+      <span id="hcLeft"></span>
+      <span>Actualizado 4 nov 2026</span>
+    </div>
+  </div>
+
   <!-- Ola inferior -->
   <div class="hero-wave">
     <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#f4faff"/></svg>
@@ -2459,14 +2495,15 @@ function cambiarIdioma(lang, btn) {
   // CASAS — edita nombre, icono y dirección
   // ══════════════════════════════════════════
   const casas = [
-    { id: 3, nombre: "CASA BAQUEDANO", icono: "", direccion: "Providencia" },
-    { id: 5, nombre: "CASA EULOGIA", icono: "", direccion: "Providencia" },
-    { id: 6, nombre: "DEPTO-ROMAN", icono: "", direccion: "Providencia" },
-    { id: 7, nombre: "CASA HUÉSPEDES", icono: "", direccion: "Providencia" },
-    { id: 8, nombre: "CASA OASIS", icono: "", direccion: "Providencia" },
-    { id: 9, nombre: "CASA PALMERA", icono: "", direccion: "Providencia" },
-    { id: 10, nombre: "CASA MAR", icono: "", direccion: "Providencia" },
-    { id: 11, nombre: "BLUE HOUSE", icono: "", direccion: "Providencia" },
+    { id: 3,  nombre: "CASA BAQUEDANO", icono: "", direccion: "Providencia", paises: { 2026: ['🇨🇱','🇦🇷','🇫🇷','🇲🇽','🇧🇴'], 2027: [] } },
+    { id: 5,  nombre: "CASA EULOGIA",   icono: "", direccion: "Providencia", paises: { 2026: ['🇪🇸','🇲🇽','🇨🇴','🇫🇷','🇨🇭','🇨🇱','🇵🇪'], 2027: ['🇨🇱','🇨🇭'] } },
+    { id: 6,  nombre: "DEPTO-ROMAN",    icono: "", direccion: "Providencia", paises: { 2026: ['🇪🇸'], 2027: [] } },
+    { id: 7,  nombre: "CASA HUÉSPEDES", icono: "", direccion: "Providencia", paises: { 2026: [], 2027: [] } },
+    { id: 8,  nombre: "CASA OASIS",     icono: "", direccion: "Providencia", paises: { 2026: ['🇪🇸','🇲🇽','🇫🇷','🇺🇸','🇬🇧','🇩🇪'], 2027: [] } },
+    { id: 9,  nombre: "CASA PALMERA",   icono: "", direccion: "Providencia", paises: { 2026: ['🇪🇸','🇫🇷','🇸🇪','🇵🇪'], 2027: [] } },
+    { id: 10, nombre: "CASA MAR",       icono: "", direccion: "Providencia", paises: { 2026: ['🇪🇸','🇫🇷'], 2027: [] } },
+    { id: 11, nombre: "BLUE HOUSE",     icono: "", direccion: "Providencia", paises: { 2026: ['🇩🇪','🇫🇷','🇪🇸','🇵🇪','🇲🇽'], 2027: [] } },
+    { id: 12, nombre: "CASA CASTILLO",  icono: "", direccion: "Providencia", paises: { 2026: ['🇩🇪','🇨🇱','🇫🇷'], 2027: [] } },
   ];
 
   // ══════════════════════════════════════════════════════
@@ -2896,7 +2933,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 86, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 1",
-      precio: 330000, estado: "ocupado", m2: 13,
+      precio: 330000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2908,7 +2945,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 87, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 2",
-      precio: 300000, estado: "ocupado", m2: 20,
+      precio: 300000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2920,7 +2957,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 88, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 3",
-      precio: 280000, estado: "ocupado", m2: 14,
+      precio: 280000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2932,7 +2969,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 89, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 4",
-      precio: 310000, estado: "ocupado", m2: 13,
+      precio: 310000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2944,7 +2981,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 90, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 5",
-      precio: 290000, estado: "ocupado", m2: 15,
+      precio: 290000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2956,7 +2993,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 91, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 6",
-      precio: 250000, estado: "ocupado", m2: 12,
+      precio: 250000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2968,7 +3005,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 92, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 7",
-      precio: 250000, estado: "ocupado", m2: 11,
+      precio: 250000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2981,7 +3018,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 93, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 8",
-      precio: 290000, estado: "ocupado", m2: 14,
+      precio: 290000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -2993,7 +3030,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 94, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 9",
-      precio: 270000, estado: "ocupado", m2: 13,
+      precio: 270000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3005,7 +3042,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 95, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 10",
-      precio: 350000, estado: "ocupado", m2: 15,
+      precio: 350000, estado: "disponible", m2: 12,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3017,7 +3054,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 96, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 11",
-      precio: 300000, estado: "ocupado", m2: 14,
+      precio: 300000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3029,7 +3066,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 97, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 12",
-      precio: 300000, estado: "ocupado", m2: 12,
+      precio: 300000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3041,7 +3078,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 98, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 13",
-      precio: 300000, estado: "ocupado", m2: 13,
+      precio: 300000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3053,7 +3090,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 99, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 14",
-      precio: 290000, estado: "ocupado", m2: 11,
+      precio: 290000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3065,7 +3102,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 100, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 15",
-      precio: 260000, estado: "ocupado", m2: 14,
+      precio: 260000, estado: "disponible", m2: 7.5,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3077,7 +3114,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 101, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 16",
-      precio: "N/A", estado: "ocupado", m2: 12,
+      precio: "N/A", estado: "disponible", m2: 7.5,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3090,7 +3127,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 102, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 17",
-      precio: 290000, estado: "ocupado", m2: 16,
+      precio: 290000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3102,7 +3139,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 103, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 18",
-      precio: 270000, estado: "ocupado", m2: 15,
+      precio: 270000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3114,7 +3151,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 104, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 19",
-      precio: 350000, estado: "ocupada", m2: 14,
+      precio: 350000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3126,7 +3163,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 105, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 20",
-      precio: 300000, estado: "ocupado", m2: 13,
+      precio: 300000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3138,7 +3175,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 106, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 21",
-      precio: 330000, estado: "ocupado", m2: 12,
+      precio: 330000, estado: "disponible", m2: 13,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3150,7 +3187,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 107, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 22",
-      precio: 320000, estado: "ocupado", m2: 11,
+      precio: 320000, estado: "disponible", m2: 13,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3162,7 +3199,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 108, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 23",
-      precio: 300000, estado: "ocupado", m2: 13,
+      precio: 300000, estado: "disponible", m2: 12,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3174,7 +3211,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 109, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 24",
-      precio: 350000, estado: "ocupado", m2: 12,
+      precio: 350000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3187,7 +3224,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 110, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 25",
-      precio: 360000, estado: "ocupado", m2: 15,
+      precio: 360000, estado: "disponible", m2: 14,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3199,7 +3236,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 111, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 26",
-      precio: 360000, estado: "ocupado", m2: 14,
+      precio: 360000, estado: "disponible", m2: 14,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3211,7 +3248,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 112, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 27",
-      precio: 280000, estado: "ocupado", m2: 15,
+      precio: 280000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3223,7 +3260,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 113, casaId: 5, periodo: "agosto-diciembre",
       nombre: "Habitación 28",
-      precio: 280000, estado: "ocupado", m2: 13,
+      precio: 280000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3237,7 +3274,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 114, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 1",
-      precio: 320000, estado: "disponible", m2: 13,
+      precio: 320000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3249,7 +3286,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 115, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 2",
-      precio: 290000, estado: "disponible", m2: 20,
+      precio: 290000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3261,7 +3298,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 116, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 3",
-      precio: 280000, estado: "disponible", m2: 14,
+      precio: 280000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3273,7 +3310,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 117, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 4",
-      precio: 310000, estado: "disponible", m2: 13,
+      precio: 310000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3285,7 +3322,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 118, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 5",
-      precio: 290000, estado: "disponible", m2: 15,
+      precio: 290000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3297,7 +3334,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 119, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 6",
-      precio: 260000, estado: "ocupado", m2: 12,
+      precio: 260000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3309,7 +3346,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 120, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 7",
-      precio: 260000, estado: "disponible", m2: 11,
+      precio: 260000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3322,7 +3359,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 121, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 8",
-      precio: 280000, estado: "ocupado", m2: 14,
+      precio: 280000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3334,7 +3371,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 122, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 9",
-      precio: 270000, estado: "disponible", m2: 13,
+      precio: 270000, estado: "disponible", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3346,7 +3383,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 123, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 10",
-      precio: 330000, estado: "disponible", m2: 15,
+      precio: 330000, estado: "disponible", m2: 12,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3358,7 +3395,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 124, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 11",
-      precio: 300000, estado: "disponible", m2: 14,
+      precio: 300000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3370,7 +3407,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 125, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 12",
-      precio: 310000, estado: "ocupado", m2: 12,
+      precio: 310000, estado: "ocupado", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3382,7 +3419,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 126, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 13",
-      precio: 310000, estado: "disponible", m2: 13,
+      precio: 310000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3394,7 +3431,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 127, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 14",
-      precio: 280000, estado: "ocupado", m2: 11,
+      precio: 280000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3406,7 +3443,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 128, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 15",
-      precio: 270000, estado: "disponible", m2: 14,
+      precio: 270000, estado: "disponible", m2: 7.5,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3418,7 +3455,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 129, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 16",
-      precio: "N/A", estado: "ocupado", m2: 12,
+      precio: "N/A", estado: "ocupado", m2: 7.5,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3431,7 +3468,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 130, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 17",
-      precio: 290000, estado: "disponible", m2: 16,
+      precio: 290000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3443,7 +3480,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 131, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 18",
-      precio: 270000, estado: "ocupado", m2: 15,
+      precio: 270000, estado: "ocupado", m2: 7,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3455,7 +3492,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 132, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 19",
-      precio: 350000, estado: "disponible", m2: 14,
+      precio: 350000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3467,7 +3504,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 133, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 20",
-      precio: 300000, estado: "disponible", m2: 13,
+      precio: 300000, estado: "disponible", m2: 10,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3479,7 +3516,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 134, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 21",
-      precio: 330000, estado: "ocupado", m2: 12,
+      precio: 330000, estado: "disponible", m2: 13,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3491,7 +3528,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 135, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 22",
-      precio: 330000, estado: "disponible", m2: 11,
+      precio: 330000, estado: "disponible", m2: 13,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3503,7 +3540,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 136, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 23",
-      precio: 300000, estado: "disponible", m2: 13,
+      precio: 300000, estado: "disponible", m2: 12,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3515,7 +3552,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 137, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 24",
-      precio: 310000, estado: "ocupado", m2: 12,
+      precio: 310000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3528,7 +3565,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 138, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 25",
-      precio: 360000, estado: "disponible", m2: 15,
+      precio: 360000, estado: "disponible", m2: 14,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3552,7 +3589,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 140, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 27",
-      precio: 280000, estado: "disponible", m2: 15,
+      precio: 280000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3564,7 +3601,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 141, casaId: 5, periodo: "marzo-julio",
       nombre: "Habitación 28",
-      precio: 280000, estado: "disponible", m2: 13,
+      precio: 280000, estado: "disponible", m2: 8,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3916,7 +3953,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 170, casaId: 8,
       nombre: "Habitación 1 - Piso 1",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3928,7 +3965,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 171, casaId: 8,
       nombre: "Habitación 2 - Piso 1",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 430000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3940,7 +3977,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 172, casaId: 8,
       nombre: "Habitación 3 - Piso 1",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 430000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3964,7 +4001,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 174, casaId: 8,
       nombre: "Habitación 5 - Piso 1",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -3988,7 +4025,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 176, casaId: 8,
       nombre: "Habitación 13 - Piso 1",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4000,7 +4037,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 177, casaId: 8,
       nombre: "Habitación 14 - Piso 1",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4013,7 +4050,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 178, casaId: 8,
       nombre: "Habitación 7 - Piso 2",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 430000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4025,7 +4062,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 179, casaId: 8,
       nombre: "Habitación 8 - Piso 2",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 460000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4037,7 +4074,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 180, casaId: 8,
       nombre: "Habitación 9 - Piso 2",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 460000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4049,7 +4086,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 181, casaId: 8,
       nombre: "Habitación 10 - Piso 2",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4061,7 +4098,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 182, casaId: 8,
       nombre: "Habitación 11 - Piso 2",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4073,7 +4110,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 183, casaId: 8,
       nombre: "Habitación 12 - Piso 2",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 460000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4086,7 +4123,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 184, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 1 - Piso 1",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4098,7 +4135,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 185, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 2 - Piso 1",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 430000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4110,7 +4147,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 186, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 3 - Piso 1",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 430000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4134,7 +4171,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 188, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 5 - Piso 1",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4158,7 +4195,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 190, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 13 - Piso 1",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4170,7 +4207,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 191, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 14 - Piso 1",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4183,7 +4220,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 192, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 7 - Piso 2",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 430000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4195,7 +4232,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 193, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 8 - Piso 2",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 460000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4207,7 +4244,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 194, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 9 - Piso 2",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 460000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4219,7 +4256,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 195, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 10 - Piso 2",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4231,7 +4268,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 196, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 11 - Piso 2",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4243,7 +4280,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 197, casaId: 8, periodo: "agosto-diciembre",
       nombre: "Habitación 12 - Piso 2",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 460000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4257,7 +4294,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 198, casaId: 9,
       nombre: "Habitación 1 - Piso 1",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4269,7 +4306,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 199, casaId: 9,
       nombre: "Habitación 2 - Piso 1",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4281,7 +4318,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 200, casaId: 9,
       nombre: "Habitación 3 - Piso 1",
-      precio: 430000, estado: "disponible", m2: 0,
+      precio: 450000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4293,7 +4330,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 201, casaId: 9,
       nombre: "Habitación 4 - Piso 1",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "privado", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4306,7 +4343,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 202, casaId: 9,
       nombre: "Habitación 5 - Piso 2",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4318,7 +4355,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 203, casaId: 9,
       nombre: "Habitación 6 - Piso 2",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4330,7 +4367,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 204, casaId: 9,
       nombre: "Habitación 7 - Piso 2",
-      precio: 450000, estado: "disponible", m2: 0,
+      precio: 460000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4342,7 +4379,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 205, casaId: 9,
       nombre: "Habitación 8 - Piso 2",
-      precio: 380000, estado: "disponible", m2: 0,
+      precio: 400000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4354,7 +4391,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 206, casaId: 9,
       nombre: "Habitación 9 - Piso 2",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4366,7 +4403,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 207, casaId: 9,
       nombre: "Habitación Sunshine - Piso 2",
-      precio: 430000, estado: "disponible", m2: 0,
+      precio: 450000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4379,7 +4416,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 208, casaId: 9,
       nombre: "Habitación 10 - Piso 3",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4391,7 +4428,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 209, casaId: 9,
       nombre: "Habitación 11 - Piso 3",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4403,7 +4440,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 210, casaId: 9,
       nombre: "Habitación 12 - Piso 3",
-      precio: 350000, estado: "disponible", m2: 0,
+      precio: 370000, estado: "disponible", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4429,7 +4466,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 212, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 1 - Piso 1",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4441,7 +4478,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 213, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 2 - Piso 1",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4453,7 +4490,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 214, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 3 - Piso 1",
-      precio: 430000, estado: "ocupado", m2: 0,
+      precio: 450000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4465,7 +4502,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 215, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 4 - Piso 1",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "privado", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4478,7 +4515,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 216, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 5 - Piso 2",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4490,7 +4527,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 217, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 6 - Piso 2",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4502,7 +4539,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 218, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 7 - Piso 2",
-      precio: 450000, estado: "ocupado", m2: 0,
+      precio: 460000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4514,7 +4551,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 219, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 8 - Piso 2",
-      precio: 380000, estado: "ocupado", m2: 0,
+      precio: 400000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4526,7 +4563,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 220, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 9 - Piso 2",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4538,7 +4575,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 221, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación Sunshine - Piso 2",
-      precio: 430000, estado: "ocupado", m2: 0,
+      precio: 450000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4551,7 +4588,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 222, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 10 - Piso 3",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4563,7 +4600,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 223, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 11 - Piso 3",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -4575,7 +4612,7 @@ function cambiarIdioma(lang, btn) {
     {
       id: 224, casaId: 9, periodo: "agosto-diciembre",
       nombre: "Habitación 12 - Piso 3",
-      precio: 350000, estado: "ocupado", m2: 0,
+      precio: 370000, estado: "ocupado", m2: 0,
       bano: "compartido", amoblada: true,
       descripcion: "",
       imagenes: [
@@ -5325,7 +5362,27 @@ function cambiarIdioma(lang, btn) {
         "./blue-house/piso-2/habitacion-20/habitacion-20-1-2.jpg",
         "./blue-house/piso-2/habitacion-20/habitacion-20-1-3.jpg"
       ]
-    }
+    },
+
+    // ── CASA CASTILLO — Marzo-Julio (286-294) ──
+    { id: 304, casaId: 12, nombre: "Habitación 1", precio: 460000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-1/habitacion-1-1-1.jpg","./casa-castillo/habitacion-1/habitacion-1-1-2.jpg","./casa-castillo/habitacion-1/habitacion-1-1-3.jpg"] },
+    { id: 305, casaId: 12, nombre: "Habitación 2", precio: 450000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-2/habitacion-2-1-1.jpg","./casa-castillo/habitacion-2/habitacion-2-1-2.jpg","./casa-castillo/habitacion-2/habitacion-2-1-3.jpg"] },
+    { id: 306, casaId: 12, nombre: "Habitación 3", precio: 470000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-3/habitacion-3-1-1.jpg","./casa-castillo/habitacion-3/habitacion-3-1-2.jpg","./casa-castillo/habitacion-3/habitacion-3-1-3.jpg"] },
+    { id: 308, casaId: 12, nombre: "Habitación 5", precio: 420000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-5/habitacion-5-1-1.jpg","./casa-castillo/habitacion-5/habitacion-5-1-2.jpg","./casa-castillo/habitacion-5/habitacion-5-1-3.jpg"] },
+    { id: 309, casaId: 12, nombre: "Habitación 6", precio: 530000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-6/habitacion-6-1-1.jpg","./casa-castillo/habitacion-6/habitacion-6-1-2.jpg","./casa-castillo/habitacion-6/habitacion-6-1-3.jpg"] },
+    { id: 310, casaId: 12, nombre: "Habitación 7", precio: 460000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-7/habitacion-7-1-1.jpg","./casa-castillo/habitacion-7/habitacion-7-1-2.jpg","./casa-castillo/habitacion-7/habitacion-7-1-3.jpg"] },
+    { id: 311, casaId: 12, nombre: "Habitación 8", precio: 450000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-8/habitacion-8-1-1.jpg","./casa-castillo/habitacion-8/habitacion-8-1-2.jpg","./casa-castillo/habitacion-8/habitacion-8-1-3.jpg"] },
+    { id: 312, casaId: 12, nombre: "Habitación 9", precio: 500000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-9/habitacion-9-1-1.jpg","./casa-castillo/habitacion-9/habitacion-9-1-2.jpg","./casa-castillo/habitacion-9/habitacion-9-1-3.jpg"] },
+
+    // ── CASA CASTILLO — Agosto-Diciembre (313-321) ──
+    { id: 313, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 1", precio: 460000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-1/habitacion-1-1-1.jpg","./casa-castillo/habitacion-1/habitacion-1-1-2.jpg","./casa-castillo/habitacion-1/habitacion-1-1-3.jpg"] },
+    { id: 314, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 2", precio: 450000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-2/habitacion-2-1-1.jpg","./casa-castillo/habitacion-2/habitacion-2-1-2.jpg","./casa-castillo/habitacion-2/habitacion-2-1-3.jpg"] },
+    { id: 315, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 3", precio: 470000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-3/habitacion-3-1-1.jpg","./casa-castillo/habitacion-3/habitacion-3-1-2.jpg","./casa-castillo/habitacion-3/habitacion-3-1-3.jpg"] },
+    { id: 317, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 5", precio: 420000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-5/habitacion-5-1-1.jpg","./casa-castillo/habitacion-5/habitacion-5-1-2.jpg","./casa-castillo/habitacion-5/habitacion-5-1-3.jpg"] },
+    { id: 318, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 6", precio: 530000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-6/habitacion-6-1-1.jpg","./casa-castillo/habitacion-6/habitacion-6-1-2.jpg","./casa-castillo/habitacion-6/habitacion-6-1-3.jpg"] },
+    { id: 319, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 7", precio: 460000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-7/habitacion-7-1-1.jpg","./casa-castillo/habitacion-7/habitacion-7-1-2.jpg","./casa-castillo/habitacion-7/habitacion-7-1-3.jpg"] },
+    { id: 320, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 8", precio: 450000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-8/habitacion-8-1-1.jpg","./casa-castillo/habitacion-8/habitacion-8-1-2.jpg","./casa-castillo/habitacion-8/habitacion-8-1-3.jpg"] },
+    { id: 321, casaId: 12, periodo: "agosto-diciembre", nombre: "Habitación 9", precio: 500000, estado: "disponible", m2: 0, bano: "compartido", amoblada: true, descripcion: "", imagenes: ["./casa-castillo/habitacion-9/habitacion-9-1-1.jpg","./casa-castillo/habitacion-9/habitacion-9-1-2.jpg","./casa-castillo/habitacion-9/habitacion-9-1-3.jpg"] }
   ];
 
   // ── TIPOS por casa ──
@@ -5338,6 +5395,7 @@ function cambiarIdioma(lang, btn) {
   casas[5].tipo = "casona"; // Casa Palmera
   casas[6].tipo = "casona"; // Casa Mar
   casas[7].tipo = "casona"; // Blue House
+  casas[8].tipo = "casona"; // Casa Castillo
 
   // ── FOTOS DE PORTADA por casa ──
   const portadas = {
@@ -5350,6 +5408,7 @@ function cambiarIdioma(lang, btn) {
     9: "./casa-palmera/fachada/fachada.jpg",
     10: "./casa-mar/fachada/fachada.jpg",
     11: "./blue-house/fachada/fachada.jpg",
+    12: "./casa-castillo/fachada/fachada.jpg",
   };
 
   // ── ESTADO ──
@@ -5461,6 +5520,7 @@ function cambiarIdioma(lang, btn) {
       detalle.classList.add("abierta");
     }
 
+    history.replaceState(null, '', '#casa-' + casaId);
     detalle.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -5482,6 +5542,7 @@ function cambiarIdioma(lang, btn) {
       if (btnVolver) btnVolver.remove();
     });
 
+    history.replaceState(null, '', window.location.pathname);
     // Scroll al inicio
     contenido.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -5574,6 +5635,53 @@ function cambiarIdioma(lang, btn) {
           ${h.nombre !== "Otra perspectiva" ? `<p class="descripcion">${h.descripcion}</p>` : ''}
         </div>
       </div>`;
+  }
+
+  // ── TABS DE AÑO EN TARJETAS ──
+  function switchPaisesTab(e, casaId, year) {
+    e.stopPropagation();
+    document.querySelectorAll(`.paises-tab[data-casa="${casaId}"]`).forEach(t => t.classList.remove('on'));
+    e.currentTarget.classList.add('on');
+    const casa    = casas.find(c => c.id === casaId);
+    const flags   = (casa && casa.paises && casa.paises[year]) || [];
+    const label   = year === 2026 ? 'Vivieron aquí:' : 'Ya reservaron:';
+    const flagsEl = document.getElementById('paises-flags-' + casaId);
+    if (flagsEl) flagsEl.innerHTML = `<span class="paises-label">${label}</span>${renderPaises(flags)}`;
+  }
+
+  // ── BANDERAS: renderiza array de países ──
+  function renderPaises(paises) {
+    return paises.map(p => {
+      if (p === 'EUSKADI')   return '<span class="flag-emoji">🏴󠁥󠁳󠁰󠁶󠁿</span>';
+      if (p === 'CATALUNYA') return '<span class="flag-regional">🏴 Catalunya</span>';
+      return `<span class="flag-emoji">${p}</span>`;
+    }).join('');
+  }
+
+  // ── CONTADOR GLOBAL DE PIEZAS ──
+  function actualizarContador() {
+    const habs = habitaciones.filter(h => {
+      if (periodoActivo === 'marzo-julio') return !h.periodo || h.periodo === 'marzo-julio';
+      return h.periodo === periodoActivo;
+    });
+    const total = habs.length;
+    const reservadas = habs.filter(h => h.estado !== 'disponible').length;
+    const left = total - reservadas;
+    const pct = total > 0 ? Math.max(reservadas / total * 100, 4) : 4;
+    const per = periodoActivo === 'marzo-julio' ? 'Marzo 2027' : 'Agosto 2027';
+    let msg;
+    if (reservadas <= 2)  msg = `✨ ${per}: reserva temprano y elige la mejor pieza`;
+    else if (left === 0)  msg = `${per} completo · Únete a la lista de espera`;
+    else if (left === 1)  msg = `¡Última pieza disponible para ${per}!`;
+    else                  msg = `${per}: ${reservadas} de ${total} piezas ya reservadas`;
+    const topEl     = document.getElementById('hcTop');
+    const fillEl    = document.getElementById('hcFill');
+    const leftEl    = document.getElementById('hcLeft');
+    const counterEl = document.getElementById('heroCounter');
+    if (topEl)     topEl.textContent      = msg;
+    if (fillEl)    fillEl.style.width     = pct + '%';
+    if (leftEl)    leftEl.textContent     = `Quedan ${left} piezas`;
+    if (counterEl) counterEl.style.display = 'block';
   }
 
   let mostrarTodas = false;
@@ -5688,6 +5796,16 @@ function cambiarIdioma(lang, btn) {
           <h3>${casa.nombre}</h3>
           <p class="dir"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> ${casa.direccion}</p>
           <p class="desc">${descsCasa[casa.id] || ''}</p>
+          ${(casa.paises && ((casa.paises[2026]||[]).length || (casa.paises[2027]||[]).length)) ? `
+          <div class="casa-paises-wrap">
+            <div class="paises-tabs">
+              ${(casa.paises[2026]||[]).length ? `<button class="paises-tab on" data-casa="${casa.id}" data-year="2026" onclick="switchPaisesTab(event,${casa.id},2026)">2026</button>` : ''}
+              <button class="paises-tab${!(casa.paises[2026]||[]).length ? ' on' : ''}" data-casa="${casa.id}" data-year="2027" onclick="switchPaisesTab(event,${casa.id},2027)">2027</button>
+            </div>
+            <div class="casa-paises" id="paises-flags-${casa.id}">
+              <span class="paises-label">Vivieron aquí:</span>${renderPaises((casa.paises[2026]||[]).length ? casa.paises[2026] : casa.paises[2027])}
+            </div>
+          </div>` : ''}
           <div class="casa-preview-footer">
             <span class="hab-count"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4l-6 2v14"/></svg> ${totalHabs} habitaciones</span>
             <span class="ver-btn">Ver habitaciones →</span>
@@ -5763,7 +5881,7 @@ function cambiarIdioma(lang, btn) {
         </div>
         ` : ''}
         <div class="grid">
-          ${casa.id === 3 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 5 || h.id === 6 || h.id === 21 || h.id === 22 || h.id === 23)) || (periodoActivo === "agosto-diciembre" && (h.id === 52 || h.id === 53 || h.id === 58 || h.id === 59 || h.id === 60))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casa.id === 4 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 7 || h.id === 8 || h.id === 18 || h.id === 19 || h.id === 32)) || (periodoActivo === "agosto-diciembre" && (h.id === 69 || h.id === 70 || h.id === 71 || h.id === 72 || h.id === 86))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casa.id === 5 ? '' : casa.id === 6 ? '' : casa.id === 7 ? '' : casa.id === 8 ? '' : casa.id === 9 ? '' : casa.id === 10 ? '' : casa.id === 11 ? '' : (habsMostradas.length > 0
+          ${casa.id === 3 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 5 || h.id === 6 || h.id === 21 || h.id === 22 || h.id === 23)) || (periodoActivo === "agosto-diciembre" && (h.id === 52 || h.id === 53 || h.id === 58 || h.id === 59 || h.id === 60))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casa.id === 4 ? habsMostradas.filter(h => (periodoActivo === "marzo-julio" && (h.id === 7 || h.id === 8 || h.id === 18 || h.id === 19 || h.id === 32)) || (periodoActivo === "agosto-diciembre" && (h.id === 69 || h.id === 70 || h.id === 71 || h.id === 72 || h.id === 86))).map((h, i) => renderTarjeta(h, i + 1)).join("") : casa.id === 5 ? '' : casa.id === 6 ? '' : casa.id === 7 ? '' : casa.id === 8 ? '' : casa.id === 9 ? '' : casa.id === 10 ? '' : casa.id === 11 ? '' : casa.id === 12 ? '' : (habsMostradas.length > 0
             ? habsMostradas.map((h, i) => renderTarjeta(h, i + 1)).join("")
             : `<div class="sin-resultados" style="grid-column:1/-1">
                 <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
@@ -9693,6 +9811,172 @@ function cambiarIdioma(lang, btn) {
             </div>
           </div>
         </div>
+        ` : casa.id === 12 ? `
+        <div style="display:flex;gap:12px;margin:24px 0;flex-wrap:wrap;">
+          <button onclick="seleccionarPisoCas('1')" id="btn-piso-1-12" style="flex:1;min-width:130px;padding:16px 12px;background:var(--teal);color:white;border:none;border-radius:12px;cursor:pointer;text-align:center;box-shadow:0 3px 12px rgba(42,188,188,0.3);font-family:inherit;transition:all 0.2s;">
+            <div style="font-weight:800;font-size:0.9rem;">Piso 1</div>
+          </button>
+          <button onclick="seleccionarPisoCas('2')" id="btn-piso-2-12" style="flex:1;min-width:130px;padding:16px 12px;background:white;color:var(--azul);border:2px solid var(--teal-md);border-radius:12px;cursor:pointer;text-align:center;font-family:inherit;transition:all 0.2s;">
+            <div style="font-weight:800;font-size:0.9rem;">Piso 2</div>
+          </button>
+        </div>
+        <div id="castillo-piso-1">
+          <div class="grid">
+            ${habitaciones.filter(h => h.casaId === 12 && (periodoActivo === "marzo-julio" ? [304,305,306,308].includes(h.id) : [313,314,315,317].includes(h.id))).map((h, i) => renderTarjeta(h, i + 1)).join("")}
+          </div>
+        </div>
+        <div id="castillo-piso-2" style="display:none">
+          <div class="grid">
+            ${habitaciones.filter(h => h.casaId === 12 && (periodoActivo === "marzo-julio" ? [309,310,311,312].includes(h.id) : [318,319,320,321].includes(h.id))).map((h, i) => renderTarjeta(h, i + 1)).join("")}
+          </div>
+        </div>
+        <div class="espacios-comunes">
+          <h3>ESPACIOS COMUNES</h3>
+          <div class="espacios-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-castillo-ec">
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/espacios-comunes/1.jpg" alt="Espacio Común 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/espacios-comunes/1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/espacios-comunes/2.jpg" alt="Espacio Común 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/espacios-comunes/2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/espacios-comunes/3.jpg" alt="Espacio Común 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/espacios-comunes/3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-castillo-ec', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-castillo-ec', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-castillo-ec-indicator">1 / 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="espacios-comunes">
+          <h3>BAÑOS</h3>
+          <div class="espacios-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-castillo-bano1">
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/baño-1/bano-1-1-1.jpg" alt="Baño 1 - Foto 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/baño-1/bano-1-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/baño-1/bano-1-1-2.jpg" alt="Baño 1 - Foto 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/baño-1/bano-1-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/baño-1/bano-1-1-3.jpg" alt="Baño 1 - Foto 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/baño-1/bano-1-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-castillo-bano1', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-castillo-bano1', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-castillo-bano1-indicator">1 / 3</div>
+              </div>
+            </div>
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-castillo-bano2">
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/baño-2/bano-2-1-1.jpg" alt="Baño 2 - Foto 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/baño-2/bano-2-1-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/baño-2/bano-2-1-2.jpg" alt="Baño 2 - Foto 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/baño-2/bano-2-1-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/baño-2/bano-2-1-3.jpg" alt="Baño 2 - Foto 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/baño-2/bano-2-1-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-castillo-bano2', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-castillo-bano2', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-castillo-bano2-indicator">1 / 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="espacios-comunes">
+          <h3>COCINA</h3>
+          <div class="espacios-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="position: relative;">
+              <div class="carousel-container">
+                <div class="carousel-wrapper" id="carousel-castillo-cocina">
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/cocina/cocina-1.jpg" alt="Cocina - Foto 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/cocina/cocina-1.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/cocina/cocina-2.jpg" alt="Cocina - Foto 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/cocina/cocina-2.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="carousel-img" style="position: relative;">
+                    <img loading="lazy" decoding="async" src="./casa-castillo/cocina/cocina-3.jpg" alt="Cocina - Foto 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="expand-icon" onclick="abrirModal('./casa-castillo/cocina/cocina-3.jpg')">
+                      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-nav prev" onclick="carouselPrev('carousel-castillo-cocina', 3)">❮</button>
+                <button class="carousel-nav next" onclick="carouselNext('carousel-castillo-cocina', 3)">❯</button>
+                <div class="carousel-indicator" id="carousel-castillo-cocina-indicator">1 / 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
         ` : ''}
         </div>`;
       // Siempre agrego el detalle al contenido (oculto por CSS hasta que se expanda)
@@ -9704,6 +9988,8 @@ function cambiarIdioma(lang, btn) {
     const contEl = document.getElementById("contador");
     if (contEl) contEl.innerHTML =
       `Mostrando <strong>${casasFiltradas.length}</strong> propiedad${casasFiltradas.length !== 1 ? "es" : ""} · <strong>${totalMostradas}</strong> habitaciones con tus filtros`;
+
+    actualizarContador();
   }
 
   // ── CAMBIAR PERÍODO ──
@@ -9754,6 +10040,33 @@ function cambiarIdioma(lang, btn) {
     const panelActivo = document.getElementById('hue-piso-' + pisoKey);
     if (panelActivo) panelActivo.style.display = 'block';
     const btnActivo = document.getElementById('btn-piso-' + pisoKey + '-7');
+    if (btnActivo) {
+      btnActivo.style.background = 'var(--teal)';
+      btnActivo.style.color = 'white';
+      btnActivo.style.border = 'none';
+      btnActivo.style.boxShadow = '0 3px 12px rgba(42,188,188,0.3)';
+      const sub = btnActivo.querySelector('div:last-child');
+      if (sub) sub.style.color = 'rgba(255,255,255,0.85)';
+    }
+  }
+
+  function seleccionarPisoCas(pisoKey) {
+    ['1','2'].forEach(p => {
+      const panel = document.getElementById('castillo-piso-' + p);
+      if (panel) panel.style.display = 'none';
+      const btn = document.getElementById('btn-piso-' + p + '-12');
+      if (btn) {
+        btn.style.background = 'white';
+        btn.style.color = 'var(--azul)';
+        btn.style.border = '2px solid var(--teal-md)';
+        btn.style.boxShadow = 'none';
+        const sub = btn.querySelector('div:last-child');
+        if (sub) sub.style.color = 'var(--muted)';
+      }
+    });
+    const panelActivo = document.getElementById('castillo-piso-' + pisoKey);
+    if (panelActivo) panelActivo.style.display = 'block';
+    const btnActivo = document.getElementById('btn-piso-' + pisoKey + '-12');
     if (btnActivo) {
       btnActivo.style.background = 'var(--teal)';
       btnActivo.style.color = 'white';
@@ -10425,6 +10738,12 @@ function cambiarIdioma(lang, btn) {
   // ── INIT ──
   buildTabs();
   filtrar();
+  // Restaurar casa abierta si hay hash en la URL
+  const _hash = window.location.hash;
+  if (_hash && _hash.startsWith('#casa-')) {
+    const _casaId = parseInt(_hash.replace('#casa-', ''));
+    if (!isNaN(_casaId)) setTimeout(() => expandirCasa(_casaId), 50);
+  }
 </script>
 
 <!-- Modal Lightbox -->
